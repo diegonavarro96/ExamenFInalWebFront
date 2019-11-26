@@ -108,7 +108,30 @@ input.addEventListener('keypress', function (event) {
   }
 })
 
+$('#logout').on('click', function(){
+  // cargar email y password de su html
+  json_to_send = {
+    
+  };
 
-function addTodo(id, todoText, completed) {
-  
-}
+  json_to_send = JSON.stringify(json_to_send)
+  console.log(json_to_send)
+  $.ajax({
+    url: 'https://examen-final-web-diego.herokuapp.com/logout',
+    headers: {
+        'Content-Type':'application/json',
+        'Authorization': 'Bearer ' + token
+    },
+    method: 'POST',
+    dataType: 'json',
+    data: json_to_send,
+    success: function(data){
+      // guardar token en localstorage o cookie
+     // localStorage.setItem('token', data.token)
+      window.location = './index.html'
+    },
+    error: function(error_msg) {
+      alert((error_msg["responseText"]))
+    }
+  })
+})
