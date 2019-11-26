@@ -97,6 +97,7 @@ input.addEventListener('keypress', function (event) {
         //todos++;
         input.value = '';
         //loadTodos()
+        location.reload(true);
         
       },
       error: function(error_msg) {
